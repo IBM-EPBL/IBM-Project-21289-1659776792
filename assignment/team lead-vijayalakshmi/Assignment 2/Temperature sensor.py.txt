@@ -1,0 +1,66 @@
+import nidaqmx
+import time
+
+task = nidaqmx.Task()
+task.ai_channels.add_ai_voltage_chan("Dev1/ai0")
+task.start()
+
+Ts = 2 # sampling time in second
+N = 10
+for k in range(N):  
+    voltage = task.read()
+    #print(voltage)
+
+    degreesC = 100*voltage - 50
+    print(degreesC)
+
+    time.sleep(Ts)
+    
+task.stop()
+task.close()
+
+# new execution
+import nidaqmx
+
+# Initialize DAQ Device
+task = nidaqmx.Task()
+task.ai_channels.add_ai_voltage_chan("Dev1/ai0")
+task.start()
+
+# Start Logging
+for k in range(N):
+    voltage = task.read()
+    degreeC = 100*voltage - 50
+    print("T =", round(degreeC,1), "[degC]")
+    data.append(degreesC)
+    time.sleep(Ts)
+    
+    #Terminate DAQ Device
+    task.stop
+    task.close()
+    
+    # Plotting
+ t = np.arrange(0,Tstop,Ts)
+ plt.plot(t,data, "-o")
+plt.title('Temperature')
+plt.xlabel('t[s]')
+plt.ylabel('Temp[degC]')
+plt.grid()
+Tmin = 20
+Tmax = 25
+plt.axis([0, Tstop, Tmin, Tmax])
+plt. show() 
+# initialize DAQ Device
+task = nidaqmx.Task()
+task.ai_channels.add_ai_voltage_chan
+task.start
+# close file
+file.close()
+
+# Start logging
+for k in range()
+voltage = task.read()
+degreesC = 100*voltage
+write file data(k*Ts)
+time.sleep(Ts)
+    
